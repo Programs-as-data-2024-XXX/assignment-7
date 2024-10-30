@@ -2,6 +2,11 @@
 All the answers can be found in the file exercise8_1.md
 
 ### Exercise 8.3:
+The changes made for this exercise can be found in: 
+- Absyn.fs on line 27-28
+- CLex.fsl on line 55-56
+- Comp.fs on line 170-171
+- CPar.fsy on line 18 and 126-127
 
 ### Exercise 8.4:
 
