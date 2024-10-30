@@ -23,6 +23,7 @@ and expr =
   | Andalso of expr * expr           (* Sequential and              *)
   | Orelse of expr * expr            (* Sequential or               *)
   | Call of string * expr list       (* Function call f(...)        *)
+  | IfSymbol of expr * expr * expr   (* If statements with symbols  *)
                                                                    
 and access =                                                       
   | AccVar of string                 (* Variable access        x    *) 
