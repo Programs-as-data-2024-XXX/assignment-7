@@ -30,6 +30,8 @@ type token =
   | TIMES
   | DIV
   | MOD
+  | SWITCH
+  | CASE
   | CHAR
   | ELSE
   | IF
@@ -74,6 +76,8 @@ type tokenId =
     | TOKEN_TIMES
     | TOKEN_DIV
     | TOKEN_MOD
+    | TOKEN_SWITCH
+    | TOKEN_CASE
     | TOKEN_CHAR
     | TOKEN_ELSE
     | TOKEN_IF
@@ -104,6 +108,8 @@ type nonTerminalId =
     | NONTERM_StmtOrDecSeq
     | NONTERM_Stmt
     | NONTERM_StmtM
+    | NONTERM_SwitchCases
+    | NONTERM_SwitchCase
     | NONTERM_StmtU
     | NONTERM_Expr
     | NONTERM_ExprNotAccess

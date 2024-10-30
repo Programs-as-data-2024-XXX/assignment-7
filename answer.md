@@ -45,3 +45,48 @@ In Comp.fs:
 Test for this can be seen in ex8_5.c
 
 ### Exercise 8.6:
+Changes have been made in Absyn.fs, CLex.fsl, Comp.fs and CPar.fsy.
+
+In CPar.fsy:
+```
+| SWITCH LPAR Expr RPAR LBRACE StmtM RBRACE   { Switch($3, $6)       }
+;
+
+SwitchCases:
+    /* if no cases */                   { []        }
+    SwitchCase                          { []        }
+    SwitchCase SwitchCases              { $1 :: $2  }
+;
+
+SwitchCase:
+    CASE CSTINT ELSESYMBOL Block        { Case($2, $4)         }
+```
+
+In Absyn.fs:
+```
+| Switch of expr * case list            (* Switch statement            *)
+
+and case = 
+  | Case of int * stmt               (* A switch case               *)
+```
+
+In CLex.fsl:
+```
+| "switch"  -> SWITCH
+    | "case"    -> CASE
+```
+
+In Comp.fs:
+```
+| Switch(e, cases) ->
+      let endLabel = newLabel()
+      let caseLabels = List.map (fun _ -> newLabel()) cases.Tail @ [endLabel]
+      let caseBody = 
+        List.map2 (fun (Case(caseValue, caseStatement)) caseLabel -> 
+          [DUP; CSTI caseValue; EQ; IFZERO caseLabel] @ cStmt caseStatement varEnv funEnv @ [GOTO endLabel] @ [Label caseLabel]
+        ) cases caseLabels
+      cExpr e varEnv funEnv @ List.concat caseBody @ [INCSP -1]
+```
+
+
+Test for this can be seen in ex8_6.c
