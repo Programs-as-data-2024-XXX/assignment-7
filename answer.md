@@ -9,6 +9,11 @@ The changes made for this exercise can be found in:
 - CPar.fsy on line 18 and 126-127
 
 ### Exercise 8.4:
+prog1 is much faster than ex8.c, because it doesn't use any local variables, and only uses the top of the stack. Therefore it never needs to store or read from memory other than the top of the stack. 
+
+In ex13.out we see that loops and conditionals really just interact as by jumping around the instructions with GOTOS or IF/IFN instructions.
+
+
 
 ### Exercise 8.5:
 The changes to exercise 8.5 are in CPar.fsy, Comp.fs, CLex.fsl and Absyn.fs
