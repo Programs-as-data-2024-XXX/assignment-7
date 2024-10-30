@@ -23,6 +23,8 @@ type token =
   | LE
   | IFSYMBOL
   | ELSESYMBOL
+  | PREINC
+  | PREDEC
   | PLUS
   | MINUS
   | TIMES
@@ -65,6 +67,8 @@ type tokenId =
     | TOKEN_LE
     | TOKEN_IFSYMBOL
     | TOKEN_ELSESYMBOL
+    | TOKEN_PREINC
+    | TOKEN_PREDEC
     | TOKEN_PLUS
     | TOKEN_MINUS
     | TOKEN_TIMES

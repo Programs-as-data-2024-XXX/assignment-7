@@ -160,6 +160,16 @@ and eval e locEnv gloEnv store : int * store =
                         (res, setSto store2 loc res) 
     | CstI i         -> (i, store)
     | Addr acc       -> access acc locEnv gloEnv store
+
+    | PreInc acc -> let (loc, store1) = access acc locEnv gloEnv store 
+                    let value = getSto store1 loc
+                    let res = value + 1
+                    (res, setSto store1 loc res)
+    | PreDec acc -> let (loc, store1) = access acc locEnv gloEnv store 
+                    let value = getSto store1 loc
+                    let res = value - 1
+                    (res, setSto store1 loc res)
+
     | Prim1(ope, e1) ->
       let (i1, store1) = eval e1 locEnv gloEnv store
       let res =
