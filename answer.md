@@ -4,9 +4,28 @@ All the answers can be found in the file exercise8_1.md
 ### Exercise 8.3:
 The changes made for this exercise can be found in: 
 - Absyn.fs on line 27-28
+
+```| PreInc of access```
+
+```| PreDec of access```
 - CLex.fsl on line 55-56
+
+```| "++" { PREINC }```
+
+```| "--" { PREDEC }```
 - Comp.fs on line 170-171
-- CPar.fsy on line 18 and 126-127
+
+```| PreInc(acc)    -> cAccess acc varEnv funEnv  @ [DUP; LDI; CSTI 1; ADD; STI]```
+
+```| PreDec(acc)    -> cAccess acc varEnv funEnv  @ [DUP; LDI; CSTI 1; SUB; STI] ```
+
+- CPar.fsy on line 19 and 137-138
+
+```%token PREINC PREDEC PLUS MINUS TIMES DIV MOD```
+
+```| PREINC Access{ PreInc($2) }```
+
+```| PREDEC Access{ PreDec($2) }```
 
 ### Exercise 8.4:
 prog1 is much faster than ex8.c, because it doesn't use any local variables, and only uses the top of the stack. Therefore it never needs to store or read from memory other than the top of the stack. 
