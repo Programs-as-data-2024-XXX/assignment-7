@@ -30,7 +30,7 @@ The changes made for this exercise can be found in:
 ### Exercise 8.4:
 prog1 is much faster than ex8.c, because it doesn't use any local variables, and only uses the top of the stack. Therefore it never needs to store or read from memory other than the top of the stack. 
 
-In ex13.out we see that loops and conditionals really just interact as by jumping around the instructions with GOTOS or IF/IFN instructions.
+In ex13.out we see that loops and conditionals really just interact as by jumping around the instructions with GOTOS or IFZERO/IFNZERO instructions.
 
 
 
