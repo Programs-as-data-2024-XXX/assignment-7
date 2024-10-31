@@ -73,7 +73,7 @@ In CPar.fsy:
 
 SwitchCases:
     /* if no cases */                   { []        }
-    SwitchCase                          { []        }
+    SwitchCase                          { [$1]        }
     SwitchCase SwitchCases              { $1 :: $2  }
 ;
 
